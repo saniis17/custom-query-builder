@@ -1,0 +1,66 @@
+{
+  "rules": [
+    {
+      "Data": [{"if": [], "get": [{"field_key": "familyIncome", "step_name": "personal info step"}]}],
+      "scoreMethod": [{"value": "Inverse", "operation": "Percentile"}, {"value": 30, "operation": "Multiplication"}]
+    },
+    {
+      "Data": [{"if": [], "get": [{"field_key": "gender", "step_name": "personal info step"}]}],
+      "assignMethod": [
+        {"value": 0, "option": "default"},
+        {"value": 0, "option": "isEmpty"},
+        {"value": 10, "option": "Female"},
+        {"value": 15, "option": "Third/Transgender"}
+      ]
+    },
+    {
+      "Data": [{"if": [], "get": [{"field_key": "otherPersonalDetails", "step_name": "personal info step"}]}],
+      "assignMethod": [
+        {"value": 0, "option": "default"},
+        {"value": 0, "option": "isEmpty"},
+        {"value": 10, "option": "Orphan"},
+        {"value": 5, "option": "Single Parent"}
+      ]
+    },
+    {
+      "Data": [{"if": [], "get": [{"field_key": "disabilityPercent", "step_name": "personal info step"}]}],
+      "assignMethod": [
+        {"value": 0, "option": "default"},
+        {"value": 0, "option": "isEmpty"},
+        {"value": 10, "option": ["5", "10", "15", "20", "25", "30", "35", "40", "45"]},
+        {"value": 15, "option": ["50", "55", "60", "65", "70", "75", "80", "85", "90", "95", "100"]}
+      ]
+    },
+    {
+      "Data": [{"if": [], "get": [{"field_key": "present_class", "step_name": "education info step"}]}],
+      "assignMethod": [
+        {"value": 0, "option": "default"},
+        {"value": 0, "option": "isEmpty"},
+        {"value": 10, "option": ["Graduation", "Post Graduation"]},
+        {"value": 5, "option": ["Class 11", "Class 12"]}
+      ]
+    },
+    {
+      "Data": [{"if": [], "get": [{"field_key": "Please_select_the_level", "step_name": "questions"}]}],
+      "assignMethod": [
+        {"value": 0, "option": "default"},
+        {"value": 0, "option": "isEmpty"},
+        {"value": 20, "option": ["International"]},
+        {"value": 10, "option": ["National"]},
+        {"value": 5, "option": ["State"]}
+      ]
+    }
+  ],
+  "Selection": [
+    {
+      "quantity": {"sortOrder": "Ascending"},
+      "sortMethod": [
+        {
+          "Data": [{"if": [], "get": [{"field_key": "submittedDate", "step_name": "application info step"}]}],
+          "sortOrder": "Ascending"
+        }
+      ]
+    }
+  ],
+  "scoreMethod": [{"value": "Addition", "operation": "many2one", "dropEmptyRow": "all"}]
+}

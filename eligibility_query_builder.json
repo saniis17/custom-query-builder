@@ -1,0 +1,51 @@
+{
+  "sign": "None",
+  "condition": "AND",
+  "rules": [
+    {
+      "step_name": "personal info step",
+      "field_key": "familyIncome",
+      "operator": "between",
+      "value": [0, 500000]
+    },
+    {
+      "step_name": "personal info step",
+      "field_key": "gender",
+      "operator": "in",
+      "value": ["Female"]
+    },
+    {
+      "step_name": "education info step",
+      "field_key": "present_class",
+      "operator": "in",
+      "value": ["Graduation"]
+    },
+    {
+      "step_name": "education info step",
+      "field_key": "degree",
+      "course": ["Graduation"],
+      "operator": "in",
+      "value": ["B.Tech", "B.E", "BCA", "B.Sc", "BBA", "B.Com"]
+    },
+    {
+      "step_name": "education info step",
+      "field_key": "percentage",
+      "course": ["Class 12"],
+      "operator": "between",
+      "value": [70, 100]
+    },
+    {
+      "step_name": "education info step",
+      "field_key": "percentage",
+      "course": ["Class 10"],
+      "operator": "between",
+      "value": [70, 100]
+    }
+  ],
+  "createNewFields": {
+    "step_name": "personal info step",
+    "new_field_key": "age",
+    "rqdFieldkeys": [{"step_name": "personal info step", "field_key": ["dob"]}],
+    "ReferenceValue": "2024-09-11"
+  }
+}

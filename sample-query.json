@@ -1,0 +1,214 @@
+{
+  "rules": [
+    {
+      "Data": [
+        {
+          "if": [],
+          "get": [
+            {
+              "field_key": "familyIncome",
+              "step_name": "personal info step"
+            }
+          ]
+        }
+      ],
+      "scoreMethod": [
+        {
+          "value": "Inverse",
+          "operation": "Percentile"
+        },
+        {
+          "value": 25,
+          "operation": "Multiplication"
+        }
+      ]
+    },
+    {
+      "Data": [
+        {
+          "if": [],
+          "get": [
+            {
+              "field_key": "otherPersonalDetails",
+              "step_name": "personal info step"
+            }
+          ]
+        }
+      ],
+      "assignMethod": [
+        {
+          "value": 0,
+          "option": "default"
+        },
+        {
+          "value": 0,
+          "option": "isEmpty"
+        },
+        {
+          "value": 15,
+          "option": "Orphan"
+        },
+        {
+          "value": 15,
+          "option": "Single Parent"
+        }
+      ]
+    },
+    {
+      "Data": [
+        {
+          "if": [],
+          "get": [
+            {
+              "field_key": "disabilityPercent",
+              "step_name": "personal info step"
+            }
+          ]
+        }
+      ],
+      "assignMethod": [
+        {
+          "value": 0,
+          "option": "default"
+        },
+        {
+          "value": 0,
+          "option": "isEmpty"
+        },
+        {
+          "value": 15,
+          "option": [
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45"
+          ]
+        },
+        {
+          "value": 15,
+          "option": [
+            "50",
+            "55",
+            "60",
+            "65",
+            "70",
+            "75",
+            "80",
+            "85",
+            "90",
+            "95",
+            "100"
+          ]
+        }
+      ]
+    },
+    {
+      "Data": [
+        {
+          "if": [
+            {
+              "value": [
+                "Graduation"
+              ],
+              "operator": "in",
+              "field_key": "present_class",
+              "step_name": "education info step"
+            }
+          ],
+          "get": [
+            {
+              "course": "Class 12",
+              "field_key": "percentage",
+              "step_name": "education info step"
+            }
+          ]
+        }
+      ],
+      "scoreMethod": [
+        {
+          "value": "Addition",
+          "operation": "many2one"
+        },
+        {
+          "value": "None",
+          "operation": "Percentile"
+        },
+        {
+          "value": 20,
+          "operation": "Multiplication"
+        }
+      ]
+    },
+    {
+      "Data": [
+        {
+          "if": [
+            {
+              "value": [
+                "Graduation"
+              ],
+              "operator": "in",
+              "field_key": "present_class",
+              "step_name": "education info step"
+            }
+          ],
+          "get": [
+            {
+              "field_key": "If_you_are_a_student_of_2nd_year_or_above,_please_write_the_percentage_scored_in_the_previous_year._(If_1st_year_students_please_mention_your_class_12th_percentage)",
+              "step_name": "questions"
+            }
+          ]
+        }
+      ],
+      "scoreMethod": [
+        {
+          "value": "Addition",
+          "operation": "many2one"
+        },
+        {
+          "value": "None",
+          "operation": "Percentile"
+        },
+        {
+          "value": 20,
+          "operation": "Multiplication"
+        }
+      ]
+    }
+  ],
+  "Selection": [
+    {
+      "quantity": {
+        "sortOrder": "Ascending"
+      },
+      "sortMethod": [
+        {
+          "Data": [
+            {
+              "if": [],
+              "get": [
+                {
+                  "field_key": "submittedDate",
+                  "step_name": "application info step"
+                }
+              ]
+            }
+          ],
+          "sortOrder": "Ascending"
+        }
+      ]
+    }
+  ],
+  "scoreMethod": [
+    {
+      "value": "Addition",
+      "operation": "many2one",
+      "dropEmptyRow": "all"
+    }
+  ]
+}
